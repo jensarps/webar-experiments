@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Augmented Reality Marker Detector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,
+        body {
+            margin: 0;
+            height:100%;
+            overflow: hidden;
+        }
+        #video-wrap {
+            display: none;
+        }
+        #monitor {
+            width: 1024px;
+            height: 1024px;
+            display: none;
+        }
+        #bgLeft {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+        #bgRight {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 3;
+        }
+        #scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="scene"></div>
+
+<canvas class="bgCanvas needsSize" id="bgLeft" width="320" height="360"></canvas>
+<canvas class="bgCanvas needsSize" id="bgRight" width="320" height="360"></canvas>
+
+
+<div id="video-wrap">
+    <canvas id="videoImage" class="needsSize" width="640" height="360"></canvas>
+    <video id="monitor" class="needsSize" width="640" height="360" autoplay></video>
+</div>
+
+<script type="text/javascript">
+    WebVRConfig = {
+        FORCE_ENABLE_VR: true,
+        FORCE_DISTORTION: true
+    }
+</script>
+
+<script type="text/javascript" src="../lib/js-aruco/src/svd.js"></script>
+<!-- <script type="text/javascript" src="../lib/js-aruco/src/posit2.js"></script> -->
+<script type="text/javascript" src="../lib/js-aruco/src/posit1.js"></script>
+<script type="text/javascript" src="../lib/js-aruco/src/cv.js"></script>
+<script type="text/javascript" src="../lib/js-aruco/src/aruco.js"></script>
+<script type="text/javascript" src="../lib/webrtc-adapter/adapter.js"></script>
+
+<script type="text/javascript" src="../lib/threejs/build/three.js"></script>
+<script type="text/javascript" src="../lib/threejs/examples/js/effects/StereoEffect.js"></script>
+<script type="text/javascript" src="../lib/threejs/examples/js/loaders/ColladaLoader.js"></script>
+
+<script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "webar-experiments",
+  "authors": [
+    "Jens Arps <mail@jensarps.de>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "lib"
+  ],
+  "dependencies": {
+    "webvr-boilerplate": "~0.3.3",
+    "requirejs": "~2.1.22",
+    "webrtc-adapter": "^0.2.9"
+  }
+}
