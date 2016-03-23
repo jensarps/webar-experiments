@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Augmented Reality Marker Detector</title>
+    <!-- <meta name="viewport" content="width=598, initial-scale=1.0"> -->
+    <style>
+        html,
+        body {
+            margin: 0;
+            /*
+            height:100%;
+            overflow: hidden;
+            */
+        }
+        #video-wrap {
+            display: none;
+        }
+        #monitor,
+        #videoImage {
+            width: 1024px;
+            height: 1024px;
+            visibility: hidden;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="scene"></div>
+<div id="video-wrap">
+    <video id="monitor" width="512" height="512" autoplay></video>
+    <canvas id="videoImage" width="512" height="512"></canvas>
+</div>
+
+<script type="text/javascript">
+    WebVRConfig = {
+        xFORCE_ENABLE_VR: true,
+        xFORCE_DISTORTION: true
+    }
+</script>
+
+<script type="text/javascript" src="../lib/jsartoolkit5/artoolkit.min.js"></script>
+
+<script type="text/javascript" src="../lib/threejs/build/three.js"></script>
+<script type="text/javascript" src="../lib/threejs/examples/js/effects/VREffect.js"></script>
+<script type="text/javascript" src="../lib/threejs/examples/js/effects/StereoEffect.js"></script>
+<script type="text/javascript" src="../lib/threejs/examples/js/loaders/ColladaLoader.js"></script>
+
+<script type="text/javascript" src="../lib/webvr-polyfill/build/webvr-polyfill.js"></script>
+<script type="text/javascript" src="../lib/webvr-boilerplate/build/webvr-manager.js"></script>
+
+<script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>
