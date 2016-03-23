@@ -15,8 +15,9 @@
     "lib"
   ],
   "dependencies": {
-    "webvr-boilerplate": "~0.3.3",
+    "webvr-boilerplate": "^0.3.6",
     "requirejs": "~2.1.22",
-    "webrtc-adapter": "^0.2.9"
+    "webrtc-adapter": "^0.2.9",
+    "webvr-polyfill": "^0.2.4"
   }
 }

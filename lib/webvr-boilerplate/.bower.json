@@ -1,6 +1,6 @@
 {
   "name": "webvr-boilerplate",
-  "version": "0.3.3",
+  "version": "0.3.6",
   "homepage": "https://github.com/borismus/webvr-boilerplate",
   "authors": [
     "Boris Smus <boris@smus.com>"
@@ -23,15 +23,18 @@
   ],
   "dependencies": {
     "threejs": "*",
-    "webvr-polyfill": "*"
+    "webvr-polyfill": "*",
+    "bower": "*",
+    "promise-polyfill": "~2.1.0"
   },
-  "_release": "0.3.3",
+  "_release": "0.3.6",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.3",
-    "commit": "69e972b6180efc517328b0a7bf441d4fb19d2e84"
+    "tag": "0.3.6",
+    "commit": "84a4680eb41d3b2d1edd9caf7afbbdcbc8eeeeb8"
   },
   "_source": "git://github.com/borismus/webvr-boilerplate.git",
-  "_target": "~0.3.3",
-  "_originalSource": "webvr-boilerplate"
+  "_target": "^0.3.6",
+  "_originalSource": "webvr-boilerplate",
+  "_direct": true
 }

@@ -1,6 +1,6 @@
 {
   "name": "webvr-boilerplate",
-  "version": "0.3.3",
+  "version": "0.3.6",
   "homepage": "https://github.com/borismus/webvr-boilerplate",
   "authors": [
     "Boris Smus <boris@smus.com>"
@@ -23,6 +23,8 @@
   ],
   "dependencies": {
     "threejs": "*",
-    "webvr-polyfill": "*"
+    "webvr-polyfill": "*",
+    "bower": "*",
+    "promise-polyfill": "~2.1.0"
   }
 }
