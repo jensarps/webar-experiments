@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Augmented Reality Marker Detector</title>
+    <style>
+        body {
+            margin: 10px;
+            font-family: monospace;
+        }
+        #room {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: solid 2px black;
+            background: rgba(255,255,255,0.5);
+        }
+        #position {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: red;
+            border-radius: 3px;
+        }
+        #numbers > div {
+            display: inline-block;
+            border: solid 1px gray;
+            margin: 5px;
+            padding: 5px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+<div>
+    <video src="../videos/VID_20160503_165602.mp4" autoplay loop controls muted width="960" height="540"></video>
+    <!--
+    <select onchange="document.querySelector('video').src=this.value">
+        <option value="../videos/VID_20160503_165602.mp4">Video 1</option>
+        <option value="../videos/VID_20160503_165635.mp4">Video 2</option>
+        <option value="../videos/VID_20160503_165729.mp4">Video 3</option>
+    </select>
+    -->
+</div>
+
+<br>
+Camera position, as reported by markers:
+<div id="numbers">
+    <div>
+        <div>Marker #1:</div>
+        <div id="marker_pos_1"></div>
+    </div>
+
+    <div>
+        <div>Marker #2:</div>
+        <div id="marker_pos_2"></div>
+    </div>
+
+    <div>
+        <div>Marker #0:</div>
+        <div id="marker_pos_0"></div>
+    </div>
+
+    <div>
+        <div>Est. Pos:</div>
+        <div id="pos"></div>
+    </div>
+</div>
+
+<br>
+Camera position, bird's-eye:
+<div id="room">
+    <div id="position"></div>
+</div>
+
+<br>
+Camera position, 3D:
+<div id="scene"></div>
+
+
+<script type="text/javascript" src="../lib/jsartoolkit5/artoolkit.min.js"></script>
+
+<script type="text/javascript" src="../lib/threejs/build/three.js"></script>
+
+<script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>
