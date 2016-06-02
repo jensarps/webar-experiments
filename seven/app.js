@@ -4,7 +4,7 @@ var video;
 
 var SCREEN_X, SCREEN_Y;
 
-var arController, markerRoot;
+var arController;
 
 var positionMarker;
 
@@ -52,29 +52,11 @@ function init() {
     video = document.querySelector('video');
 
     setupScene();
-    
+
 }
 
 function setupScene() {
-    "use strict";
-
-
-    SCREEN_X = screen.width;
-    SCREEN_Y = screen.height;
-
-    if (SCREEN_Y > SCREEN_X) {
-        SCREEN_X = screen.height;
-        SCREEN_Y = screen.width;
-    }
-
-    //console.log(SCREEN_X, SCREEN_Y);
-
-
-    //SCREEN_X = 598;
-    //SCREEN_Y = 335;
-
-    //SCREEN_X = 640;
-    //SCREEN_Y = 360;
+    'use strict';
 
     SCREEN_X = 960 / 2;
     SCREEN_Y = 540 / 2;
@@ -91,10 +73,6 @@ function setupScene() {
 
         scene.add(markerObject);
         scene.add(existingMarkers[id].spectator);
-
-        var _box = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial());
-
-        markerObject.add(_box);
     }
 
     camera = new THREE.PerspectiveCamera(45, SCREEN_X / SCREEN_Y, 0.5, 1000);
@@ -106,10 +84,47 @@ function setupScene() {
     container = document.getElementById('scene');
     container.appendChild(renderer.domElement);
 
+    // room
+
+    var geometry = new THREE.PlaneGeometry(30, 20);
+    var material = new THREE.MeshBasicMaterial({color: 0xf0f000, side: THREE.DoubleSide});
+    var floor = new THREE.Mesh(geometry, material);
+
+    floor.rotateX(Math.PI / 2);
+    floor.position.x = 5;
+    floor.position.y = -5;
+    floor.position.z = -5;
+
+    scene.add(floor);
+
+
+    geometry = new THREE.PlaneGeometry(30, 10);
+    material = new THREE.MeshBasicMaterial({color: 0x00f000, side: THREE.DoubleSide});
+    var back = new THREE.Mesh(geometry, material);
+
+    back.position.x = 5;
+    back.position.y = 0;
+    back.position.z = -15;
+
+    scene.add(back);
+
+    geometry = new THREE.PlaneGeometry(30, 10);
+    material = new THREE.MeshBasicMaterial({color: 0xf00000, side: THREE.DoubleSide});
+    var left = new THREE.Mesh(geometry, material);
+
+    left.rotateY(Math.PI / 2);
+    left.position.x = -7.5;
+    left.position.y = 0;
+    left.position.z = 0;
+
+    scene.add(left);
+
+    // spheres
+
     var boxGeo = new THREE.SphereGeometry(1, 16, 16);
     var boxMat = new THREE.MeshBasicMaterial({
-        color : 0x0099ff,
-        wireframe : true
+        color: 0x0099ff,
+        wireframe: true
     });
     var boxMesh = new THREE.Mesh(boxGeo, boxMat);
     boxMesh.position.y = -2;
@@ -121,40 +136,7 @@ function setupScene() {
         scene.add(box);
     }
 
-
-    var geometry = new THREE.PlaneGeometry(30, 20);
-    var material = new THREE.MeshBasicMaterial( {color: 0xf0f000, side: THREE.DoubleSide} );
-    var floor = new THREE.Mesh( geometry, material );
-
-    floor.rotateX(Math.PI/2);
-    floor.position.x = 5;
-    floor.position.y = -5;
-    floor.position.z = -5;
-    
-    scene.add( floor );
-
-
-    geometry = new THREE.PlaneGeometry(30, 10);
-    material = new THREE.MeshBasicMaterial( {color: 0x00f000, side: THREE.DoubleSide} );
-    var back = new THREE.Mesh( geometry, material );
-
-    back.position.x = 5;
-    back.position.y = 0;
-    back.position.z = -15;
-
-    scene.add(back);
-
-    geometry = new THREE.PlaneGeometry(30, 10);
-    material = new THREE.MeshBasicMaterial( {color: 0xf00000, side: THREE.DoubleSide} );
-    var left = new THREE.Mesh( geometry, material );
-
-    left.rotateY(Math.PI/2);
-    left.position.x = -7.5;
-    left.position.y = 0;
-    left.position.z = 0;
-
-    scene.add( left );
-
+    // start ARController
     var cameraParam = new ARCameraParam();
     cameraParam.onload = function () {
         arController = new ARController(320, 240, cameraParam);
@@ -283,11 +265,11 @@ function render(timestamp) {
 
     positionMarker.style.left = 50 + (estimatedPosition.x * 5) + 'px';
     positionMarker.style.top = 50 + (estimatedPosition.z * 5) + 'px';
-    
+
     camera.position.x = estimatedPosition.x;
     camera.position.y = estimatedPosition.y;
     camera.position.z = estimatedPosition.z;
-    
+
     renderer.render(scene, camera);
 }
 
